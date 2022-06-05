@@ -1,4 +1,4 @@
-package com.example.tours_android
+package com.example.tours_android.viewmodels
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +6,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tours_android.viewmodels.ExampleItem
+import com.example.tours_android.R
+import com.example.tours_android.model.Movie
 
-class ExampleAdapter(private val exampleList:List<ExampleItem>) :RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>() {
+class ExampleAdapter(private val exampleList:List<ExampleItem>,
+    private val listener: OnItemClickListener
+                     )
+    :RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>() {
 
-
+var items= mutableListOf<Movie>()
+    fun setList(items: List<Movie>){
+        this.items=items.toMutableList()
+        notifyDataSetChanged()
+    }
     /**
      * @param parent is the ViewGroup that the View will be added to
      * @viewType is the type of View that will be created
@@ -30,24 +38,48 @@ class ExampleAdapter(private val exampleList:List<ExampleItem>) :RecyclerView.Ad
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
 //        print("onBindViewHolder")
 //        System.out.println("onBindViewHolder")
+
+        holder.bind(items.get(position))
         val currentItem=exampleList[position]
         holder.imageView.setImageResource(currentItem.imageResource)
         holder.textView1.text=currentItem.text1
         holder.textView2.text=currentItem.text2
     }
 
-    override fun getItemCount()= exampleList.size
+    override fun getItemCount()= items.size
 
     //viewholder represents a single row in the recycler view
     /**
      * @param itemView is the view that will be used to represent a single row in the recycler view
      * @return the view holder that will be used to represent a single row in the recycler view
      * */
-    class ExampleViewHolder (itemView:View): RecyclerView.ViewHolder(itemView) {
+   inner class ExampleViewHolder (itemView:View): RecyclerView.ViewHolder(itemView),View.OnClickListener{
         val imageView: ImageView=itemView.findViewById(R.id.image_view)
         val textView1:TextView=itemView.findViewById(R.id.text_view1)
         val textView2:TextView=itemView.findViewById(R.id.text_view2)
 
+        fun bind(item: Movie){
+           // imageView.setImageResource(item.imageUrl)
+            textView1.text=item.name
+            textView2.text=item.description
+        }
+
+        init {
+            itemView.setOnClickListener (this)
+        }
+
+        override fun onClick(v: View?) {
+            if(adapterPosition!=RecyclerView.NO_POSITION){
+                listener.onItemClick(adapterPosition)
+            }
+
+        }
+
 
     }
+
+    interface OnItemClickListener{
+        fun onItemClick(position:Int)
+    }
+
 }

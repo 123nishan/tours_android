@@ -1,10 +1,11 @@
-package com.example.tours_android
+package com.example.tours_android.view
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import com.example.tours_android.R
 
 class FavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

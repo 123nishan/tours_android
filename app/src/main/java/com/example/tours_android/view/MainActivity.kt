@@ -1,4 +1,4 @@
-package com.example.tours_android
+package com.example.tours_android.view
 
 import android.content.Intent
 import android.graphics.Color
@@ -11,9 +11,8 @@ import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.example.tours_android.viewmodels.ExampleItem
+import com.example.tours_android.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import okhttp3.*
 
 class MainActivity : AppCompatActivity() {
    var mTextViewResult:TextView? = null
@@ -45,8 +44,8 @@ class MainActivity : AppCompatActivity() {
     }
 
    override fun onOptionsItemSelected(item: MenuItem)= when(item.itemId){
-            R.id.action_fav->{
-                    val intent=Intent(this,FavActivity::class.java)
+            R.id.action_fav ->{
+                    val intent=Intent(this, FavActivity::class.java)
                     startActivity(intent)
 //                    return true
                 true

@@ -16,7 +16,7 @@ class RecyclerActivityViewModel:ViewModel() {
 
     fun makeApiCall(){
         var client: OkHttpClient = OkHttpClient()
-        var url:String="https://reqres.in/api/users?page=2"
+        var url:String="https://howtodoandroid.com/movielist.json"
 
         var request: Request = Request.Builder().url(url).build()
         client.newCall(request).enqueue(object: Callback {
