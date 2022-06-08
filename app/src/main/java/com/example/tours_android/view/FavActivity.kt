@@ -13,7 +13,7 @@ class FavActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fav)
         supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#008577")))
 
-        supportActionBar!!.title = "Tours"
+        supportActionBar!!.title = "Favorite"
 
         var actionBar=getSupportActionBar()
         //display back button

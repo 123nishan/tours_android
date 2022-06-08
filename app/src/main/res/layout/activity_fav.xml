@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".view.FavActivity">
 
     <TextView
@@ -11,7 +12,7 @@
         android:id="@+id/favorite_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="favorite page"
+        android:text="Favorite page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="161dp" />

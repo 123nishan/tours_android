@@ -8,8 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tours_android.R
 import com.example.tours_android.model.Movie
-
-
+import com.squareup.picasso.Picasso
 
 
 class MovieAdapter (
@@ -43,9 +42,14 @@ class MovieAdapter (
 
         holder.bind(items.get(position))
         val currentItem=items[position]
+        Picasso.get().load(currentItem.imageUrl)
+            .error(R.drawable.ic_baseline_error_outline_24)
+            .fit()
+            .centerCrop()
+            .into(holder.imageView)
         // holder.imageView.setImageResource(currentItem.imageUrl)
         holder.textView1.text=currentItem.name
-        holder.textView2.text=currentItem.description
+        holder.textView2.text=currentItem.category
     }
 
     override fun getItemCount()= items.size
